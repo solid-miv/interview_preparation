@@ -1,4 +1,3 @@
-#BRUTE FORCE
 #O(n*k*log(k)); n - length of the list, k - max length of the string
 def group_anagrams(arr: list[str]) -> list[str]:
     """Groups anagrams together.
@@ -35,50 +34,43 @@ def group_anagrams(arr: list[str]) -> list[str]:
 
     return answ
 
-# Modified version
-# def group_anagrams_modified(arr: list[str]) -> list[str]:
-#     """Groups anagrams together.
+# O(n^2); n - length of the list
+def group_anagrams_modified(arr: list[str]) -> list[str]:
+    """Groups anagrams together.
 
-#     Args: 
-#         arr (list): The list of original strings.
+    Args: 
+        arr (list): The list of original strings.
     
-#     Returns:
-#         list: The list of grouped anagrams.
-#     """
+    Returns:
+        list: The list of grouped anagrams.
+    """
 
-#     table = {}
-#     count = 0
+    table = {}
 
-#     for item in arr:
-#         char_table = {}
+    for item in arr:
+        char_table = {}
 
-#         for c in item:
-#             char_table[item]
-#         # list_item = list(item)
-#         # list_item.sort()
-#         # list_item = "".join(list_item)
+        for c in item:
+            char_table[c] = 1 if c not in char_table else char_table[c] + 1
+            
+        table[item] = char_table
 
-#         if list_item in table:
-#             tpl = table[list_item]
-#             tpl += (count,)
-#             table[list_item] = tpl
-#         else:
-#             table[list_item] = (count,)
+    answ = []
 
-#         count += 1
+    for value in table.values():
+        for i in range(len(arr)):
+            if table[arr[i]] == value:
+                answ.append(arr[i])
 
-#     answ = []
-
-#     for value in table.values():
-#         for i in range(len(value)):
-#             answ.append(arr[value[i]])
-
-#     return answ
+        if len(arr) == len(answ):
+            break    
+    
+    return answ
 
 
 if __name__ == "__main__":
     arr = ["nkl", "hello", "aba", "olleh", "baa", "kln"]
 
-    x = group_anagrams(arr)
+    x = group_anagrams_modified(arr)
 
     print(x)
