@@ -1,3 +1,6 @@
+from collections import defaultdict, Counter
+
+
 #O(n*k*log(k)); n - length of the list, k - max length of the string
 def group_anagrams(arr: list[str]) -> list[str]:
     """Groups anagrams together.
@@ -67,10 +70,36 @@ def group_anagrams_modified(arr: list[str]) -> list[str]:
     
     return answ
 
+#O(n*k*log(k)); n - length of the list, k - max length of the string
+def group_anagrams_modified2(arr: list[str]) -> list[str]:
+    """Groups anagrams together.
+
+    Args: 
+        arr (list): The list of original strings.
+    
+    Returns:
+        list: The list of grouped anagrams.
+    """
+
+    table = defaultdict(list)
+
+    for item in arr:
+        chars = Counter(item)
+        chars_tuple = tuple(sorted(chars.items()))  # sorting takes O(k*log(k))
+        
+        table[chars_tuple].append(item)
+    
+    answ = []
+
+    for key in table.keys():
+        answ.extend(table[key])
+
+    return answ
+
 
 if __name__ == "__main__":
     arr = ["nkl", "hello", "aba", "olleh", "baa", "kln"]
 
-    x = group_anagrams_modified(arr)
+    x = group_anagrams_modified2(arr)
 
     print(x)
