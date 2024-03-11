@@ -10,7 +10,7 @@ class Node:
         When performed on a binary search tree, it visits the nodes in ascending order (hence the name 'in-order').
         """
         if self.left:
-            yield from self.left.in_order_gen()  # same as for value in self.left.in_order_gen(): yield value
+            yield from self.left.in_order_gen()  # same as 'for value in self.left.in_order_gen(): yield value'
 
         yield self.data
 
