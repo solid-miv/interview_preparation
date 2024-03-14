@@ -5,7 +5,7 @@ class BinaryNode:
         self.left = left
         self.right = right
 
-# O(n*log(n)); n is the number of elements in the array
+# O(n); n is the number of elements in the array
 def min_tree(arr):
     """
     Given a sorted (increasing order) array with unique integer elements, 
@@ -27,7 +27,7 @@ def min_tree(arr):
         mid = (start + end) // 2
 
         root = BinaryNode(arr[mid])
-        root.left = min_tree_supp(arr, start, mid-1)  # using slicing arr[:mid] makes dividing the array O(n) -> this division is O(log n)
+        root.left = min_tree_supp(arr, start, mid-1)  # using slicing arr[:mid] makes dividing the array O(n) -> this division is O(1)
         root.right = min_tree_supp(arr, mid+1, end)
 
         return root
