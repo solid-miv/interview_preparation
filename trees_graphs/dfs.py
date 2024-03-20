@@ -32,4 +32,4 @@ def deapth_first_search(start: Any, is_goal: Callable, next_states: List):
                 to_do.put(path_temp)
                 previously_explored.add(state)
 
-    raise []
+    return []
