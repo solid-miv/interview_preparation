@@ -1,3 +1,10 @@
+"""
+List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the nodes at each depth.
+
+listify_depths uses DFS
+
+listify_depths_2 uses BFS
+"""
 import queue
 import copy
 import time
@@ -51,7 +58,7 @@ def listify_depths(root):
 
         while not to_do.empty():
             current = to_do.get()
-            count += 1
+            count = current.distance + 1
 
             for state in next_states(current):
                 if state not in explored:
@@ -111,7 +118,7 @@ def listify_depths_2(root):
 
         while not to_do.empty():
             current = to_do.get()
-            count += 1
+            count = current.distance + 1
 
             for state in next_states(current):
                 if state not in explored:
@@ -139,25 +146,27 @@ def listify_depths_2(root):
 
 
 if __name__ == '__main__':
-    root = BinaryNode(1, 
-                      BinaryNode(2, 
-                                 BinaryNode(3, 
-                                            BinaryNode(4, 
-                                                       BinaryNode(5, 
-                                                                  BinaryNode(6, 
-                                                                             BinaryNode(7, 
-                                                                                        BinaryNode(8, 
-                                                                                                   BinaryNode(9, 
-                                                                                                              BinaryNode(10, 
-                                                                                                                         BinaryNode(11, 
-                                                                                                                                    BinaryNode(12, 
-                                                                                                                                               BinaryNode(13, 
-                                                                                                                                                          BinaryNode(14, 
-                                                                                                                                                                     BinaryNode(15, 
-                                                                                                                                                                                BinaryNode(16))))))))))))))))
+    # root = BinaryNode(1, 
+    #                   BinaryNode(2, 
+    #                              BinaryNode(3, 
+    #                                         BinaryNode(4, 
+    #                                                    BinaryNode(5, 
+    #                                                               BinaryNode(6, 
+    #                                                                          BinaryNode(7, 
+    #                                                                                     BinaryNode(8, 
+    #                                                                                                BinaryNode(9, 
+    #                                                                                                           BinaryNode(10, 
+    #                                                                                                                      BinaryNode(11, 
+    #                                                                                                                                 BinaryNode(12, 
+    #                                                                                                                                            BinaryNode(13, 
+    #                                                                                                                                                       BinaryNode(14, 
+    #                                                                                                                                                                  BinaryNode(15, 
+    #                                                                                                                                                                             BinaryNode(16))))))))))))))))
+    
+    root = BinaryNode(1, BinaryNode(2, BinaryNode(4), BinaryNode(5)), BinaryNode(3, BinaryNode(6), BinaryNode(7)))
 
     # first_start = time.time()
-    linked_lists = listify_depths(root)
+    linked_lists = listify_depths_2(root)
     # first_end = time.time()
 
     # second_start = time.time()
