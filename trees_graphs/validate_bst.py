@@ -1,3 +1,6 @@
+"""
+Validate BFS: Implement a function to check if a binary tree is a binary search tree.
+"""
 class BinaryNode:
     def __init__(self, data, left=None, right=None):
         self.data = data
@@ -44,7 +47,39 @@ def validate_bst(root):
 
 
 if __name__ == '__main__':
-    root = BinaryNode(1, left=None, right=BinaryNode(3, left=BinaryNode(4)))
+    # root = BinaryNode(1, left=None, right=BinaryNode(3, left=BinaryNode(2), right=BinaryNode(3)))
+
+    # root = BinaryNode(50, 
+    #               left=BinaryNode(30, 
+    #                               left=BinaryNode(20, 
+    #                                               left=BinaryNode(10), 
+    #                                               right=BinaryNode(25)), 
+    #                               right=BinaryNode(40, 
+    #                                                left=BinaryNode(35), 
+    #                                                right=BinaryNode(45))), 
+    #               right=BinaryNode(70, 
+    #                                left=BinaryNode(60, 
+    #                                                left=BinaryNode(55), 
+    #                                                right=BinaryNode(65)), 
+    #                                right=BinaryNode(80, 
+    #                                                 left=BinaryNode(75), 
+    #                                                 right=BinaryNode(90))))
+
+    root = BinaryNode(50, 
+                  left=BinaryNode(30,  # This value is greater than the root, which violates the BST property
+                                  left=BinaryNode(20, 
+                                                  left=BinaryNode(10), 
+                                                  right=BinaryNode(25)), 
+                                  right=BinaryNode(40, 
+                                                   left=BinaryNode(35), 
+                                                   right=BinaryNode(45))), 
+                  right=BinaryNode(70,  # This value is less than the root, which violates the BST property
+                                   left=BinaryNode(60, 
+                                                   left=BinaryNode(61), 
+                                                   right=BinaryNode(65)), 
+                                   right=BinaryNode(80, 
+                                                    left=BinaryNode(75), 
+                                                    right=BinaryNode(90))))
 
     answ = validate_bst(root)
 
