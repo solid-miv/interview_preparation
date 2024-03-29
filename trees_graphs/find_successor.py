@@ -68,7 +68,7 @@ def find_successor_2(node):
     if node is None:
         return -1
 
-    # node hat a right child
+    # node has a right child
     if node.right is not None:
         node = node.right
 
