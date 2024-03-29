@@ -22,6 +22,14 @@ class BinaryNode:
         if self.right:
             yield from self.right.in_order_gen()
 
+
+class BinaryNodeWithParent:
+    def __init__(self, data, left=None, right=None, parent=None):
+        self.data = data
+        self.left = left
+        self.right = right
+        self.parent = parent
+
 # Brute force; O(n); n is the number of elements in the binary tree
 def find_successor(root, node_data):
     """
@@ -46,6 +54,35 @@ def find_successor(root, node_data):
 
     return -1
 
+# O(h); h is the height of the binary tree
+def find_successor_2(node):
+    """
+    Given only a node, function finds the in-order successor of the node.
+
+    Args:
+        node (BinaryNodeWithParent): Node to find the successor of.
+    
+    Returns:
+        int: Data of the in-order successor of the node, -1 if the node specified is the last node in the tree or node was not found.
+    """
+    if node is None:
+        return None
+
+    # node hat a right child
+    if node.right is not None:
+        node = node.right
+
+        while node.left is not None:
+            node = node.left
+        
+        return node.data
+    
+    # node does not have a right child
+    while node.parent is not None and node.parent.right is node:
+        node = node.parent
+
+    return node.parent.data if node.parent is not None else -1
+
 
 if __name__ == "__main__":
     # Generate a binary search tree
@@ -56,5 +93,7 @@ if __name__ == "__main__":
     node_data = 5
 
     successor = find_successor(root, node_data)
-
     print(f"Successor of {node_data} is {successor}")
+
+    successor2 = find_successor_2(BinaryNode(3, BinaryNode(2), BinaryNode(4)))
+    print(f"Successor of {BinaryNode(3, BinaryNode(2), BinaryNode(4)).data} is {successor2}")
