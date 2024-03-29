@@ -66,7 +66,7 @@ def find_successor_2(node):
         int: Data of the in-order successor of the node, -1 if the node specified is the last node in the tree or node was not found.
     """
     if node is None:
-        return None
+        return -1
 
     # node hat a right child
     if node.right is not None:
