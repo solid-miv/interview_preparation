@@ -1,8 +1,26 @@
+"""
+Build order: You are given a list of projects and a list of dependencies 
+(which is a list of pairs of projects, where the second project is dependent on the first project).
+All of a project's dependencies must be built before the project is.
+Find a build order that will allow the projects to be built. 
+If there is no valid build order, return an error.
+"""
 from collections import defaultdict
 import queue
 
 # O(P + D); P - number of projects, D - number of dependencies
 def build_order(projects, dependencies):
+    """
+    Given a list of projects and a list of dependencies, 
+    function finds a build order that will allow the projects to be built.
+
+    Args:
+        projects (list): A list of projects.
+        dependencies (list[tuple]): A list of dependencies.
+    
+    Returns:
+        list: A list of projects in the build order.
+    """
     graph = defaultdict(list)
     incoming_degree = defaultdict(int)
 
