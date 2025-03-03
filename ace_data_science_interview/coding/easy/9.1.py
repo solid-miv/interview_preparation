@@ -3,7 +3,7 @@ Given two arrays, write a function to compute their intersection.
 """
 from typing import List
 
-
+# O(n + m) time complexity
 def get_intersection(arr1: List[int], arr2: List[int]):
     set_arr1 = set(arr1)
     set_arr2 = set(arr2)
