@@ -14,6 +14,8 @@ def get_triplet_max_product(arr: List[int]):
 
 # O(n) time complexity
 def get_triplet_max_product_2(arr: List[int]):
+    assert len(arr) >= 3, "Array must have at least 3 elements"
+
     a = heapq.nlargest(3, arr)  # O(n) time complexity
     b = heapq.nsmallest(2, arr)  # O(n) time complexity
 
