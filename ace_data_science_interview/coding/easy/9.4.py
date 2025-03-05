@@ -1,4 +1,4 @@
-from heapq import heappush, heappop
+from heapq import heappush, heappop  # heapq uses min heap by default
 from typing import List
 
 # O(k^2*log(k)) time complexity (if k << len(arr))
