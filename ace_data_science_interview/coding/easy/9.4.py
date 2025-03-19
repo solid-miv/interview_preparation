@@ -15,6 +15,7 @@ def get_kth_smallest(arr: List[List[int]], k: int):
     
     return res
 
+
 if __name__ == "__main__":
     A = [[1, 4, 7],
          [3, 5, 9],
